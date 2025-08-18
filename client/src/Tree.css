@@ -1,0 +1,50 @@
+.tree-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+  }
+  
+  .tree-main-content {
+    flex: 1; /* Allow main content to take remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center vertically */
+    padding: 20px;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center; /* Center images horizontally */
+    margin-bottom: 20px; /* Add some space below the images */
+  }
+  
+  .tree-image {
+    max-width: 660px; /* Adjust image size as needed */
+    height: auto;
+    margin: 0 10px; /* Add spacing between images */
+  }
+  
+  .next-button-container {
+    text-align: center;
+  }
+  
+  .next-button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Example button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Add any other necessary styles from your FrontPage.css */
+  
+  /* Copy navbar and footer styling from FrontPage.css */
+  .navbar{
+  /* your navbar css */
+  }
+  
+  .footer{
+  /* your footer css */
+  }
