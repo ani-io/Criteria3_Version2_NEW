@@ -28,7 +28,7 @@ import {
 } from "recharts";
 import UserData from "./UserData";
 import Course from "./Course";
-import from "./";
+import Indirect from "./Indirect";
 
 // Create a context for sharing CO PO PSO Mapping data
 export const MappingContext = createContext();
@@ -43,7 +43,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [reportGenerated, setReportGenerated] = useState(false);
-  const [show, setShowIndirect] = useState(false);
+  const [showIndirect, setShowIndirect] = useState(false);
   const [mappingError, setMappingError] = useState("");
 
   const handleShowIndirect = () => {
@@ -154,12 +154,12 @@ function App() {
     return { ...rowData, name: rowHeaders[rowIndex] };
   });
 
-  // Add average row with custom label for direct or  attainment
+  // Add average row with custom label for direct or indirect attainment
   let footerLabel = "Average";
   let mappingFooterLabel = "Average Mapping Value";
-  if (output && output.type && output.type.toLowerCase() === "") {
-    footerLabel = " Attainment";
-    mappingFooterLabel = " Attainment";
+  if (output && output.type && output.type.toLowerCase() === "indirect") {
+    footerLabel = "Indirect Attainment";
+    mappingFooterLabel = "Indirect Attainment";
   } else if (output && output.type && output.type.toLowerCase() === "direct") {
     footerLabel = "CO-PO-PSO Mapping";
     mappingFooterLabel = "CO-PO-PSO Mapping";
@@ -682,10 +682,10 @@ function App() {
               </ResponsiveContainer>
             </Box>
 
-            {/* Only show the  component if show is true */}
-            {show ? (
-              <
-                show={show}
+            {/* Only show the Indirect component if showIndirect is true */}
+            {showIndirect ? (
+              <Indirect
+                showIndirect={showIndirect}
                 directPO80={output && output.po_values
                   ? Object.fromEntries(
                       Object.entries(output.po_values).map(([key, value]) => [key, value * 0.8])
@@ -699,10 +699,10 @@ function App() {
                     variant="contained"
                     color="primary"
                     size="large"
-                    onClick={handleShow}
+                    onClick={handleShowIndirect}
                     fullWidth
                   >
-                    Do you want to continue for  attainment?
+                    Do you want to continue for Indirect attainment?
                   </Button>
                 </Box>
               )
